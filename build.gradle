@@ -1,0 +1,58 @@
+plugins {
+    alias(libs.plugins.fabric.loom)
+}
+
+version = libs.versions.mod.version.get()
+group = property('maven_group')
+
+base {
+    archivesName = property('archives_base_name')
+}
+
+repositories {
+    maven {
+        name = "meteor-maven"
+        url = "https://maven.meteordev.org/releases"
+    }
+    maven {
+        name = "meteor-maven-snapshots"
+        url = "https://maven.meteordev.org/snapshots"
+    }
+    maven {
+        name = "CurseMaven"
+        url = "https://cursemaven.com"
+    }
+}
+
+dependencies {
+    minecraft libs.minecraft
+    mappings loom.officialMojangMappings()
+    implementation libs.fabric.loader
+
+    implementation libs.meteor.client
+
+    modCompileOnly "curse.maven:litematica-308892:8382368"
+    modCompileOnly "curse.maven:malilib-303119:7763655"
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(libs.versions.jdk.get().toInteger())
+    }
+}
+
+processResources {
+    def propertyMap = [
+        "version": project.version,
+        "minecraft_version": libs.versions.minecraft.get(),
+        "jdk_version": libs.versions.jdk.get()
+    ]
+    inputs.properties(propertyMap)
+    filesMatching("fabric.mod.json") {
+        expand(propertyMap)
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs += ["-Xlint:deprecation", "-Xlint:unchecked"]
+}
