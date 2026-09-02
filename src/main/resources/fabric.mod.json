@@ -1,16 +1,15 @@
 {
   "schemaVersion": 1,
-  "id": "addon-template",
+  "id": "autobuild-addon",
   "version": "${version}",
-  "name": "Addon Template",
-  "description": "An addon template for Meteor Client addons.",
+  "name": "AutoBuild Addon",
+  "description": "Tu dong dat block theo schematic dang active trong Litematica.",
   "authors": [
-    "seasnail"
+    "YourName"
   ],
-  "contact": {
-    "sources": "https://github.com/MeteorDevelopment/meteor-addon-template"
-  },
-  "icon": "assets/template/icon.png",
+  "contact": {},
+  "license": "CC0-1.0",
+  "icon": "assets/autobuild-addon/icon.png",
   "environment": "client",
   "entrypoints": {
     "meteor": [
@@ -20,17 +19,13 @@
   "mixins": [
     "addon-template.mixins.json"
   ],
-  "custom": {
-    "meteor-client:color": "225,25,25",
-    "modmenu": {
-      "parent": {
-        "id": "meteor-client"
-      }
-    }
-  },
   "depends": {
-    "java": ">=${jdk_version}",
+    "fabricloader": "*",
     "minecraft": "${minecraft_version}",
+    "java": "${jdk_version}",
     "meteor-client": "*"
+  },
+  "custom": {
+    "meteor-client:color": "0,255,150"
   }
 }
