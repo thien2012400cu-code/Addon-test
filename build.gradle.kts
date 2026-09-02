@@ -31,15 +31,10 @@ repositories {
 dependencies {
     // Fabric
     minecraft(libs.minecraft)
-    mappings(loom.officialMojangMappings())
     implementation(libs.fabric.loader)
 
     // Meteor
     implementation(libs.meteor.client)
-
-    // --- Litematica + MaLiLib ---
-    modCompileOnly("curse.maven:litematica-308892:8382368")
-    modCompileOnly("curse.maven:malilib-303119:7763655")
 }
 
 java {
