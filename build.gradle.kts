@@ -20,15 +20,27 @@ repositories {
         name = "meteor-maven-snapshots"
         url = uri("https://maven.meteordev.org/snapshots")
     }
+
+    // --- Them cho Litematica/MaLiLib ---
+    maven {
+        name = "CurseMaven"
+        url = uri("https://cursemaven.com")
+    }
 }
 
 dependencies {
     // Fabric
     minecraft(libs.minecraft)
+    mappings(variantOf(libs.yarn) { classifier("v2") })
     implementation(libs.fabric.loader)
 
     // Meteor
     implementation(libs.meteor.client)
+
+    // --- Litematica + MaLiLib (compileOnly: khong bundle vao jar addon,
+    //     nguoi dung tu cai 2 mod nay rieng trong thu muc mods) ---
+    modCompileOnly("curse.maven:litematica-308892:8382368")   // litematica-fabric-1.21.11-0.26.11
+    modCompileOnly("curse.maven:malilib-303119:7763655")      // malilib-fabric-1.21.11-0.27.7
 }
 
 java {
