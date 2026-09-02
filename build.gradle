@@ -30,8 +30,8 @@ dependencies {
 
     implementation libs.meteor.client
 
-    modCompileOnly "curse.maven:litematica-308892:8382368"
-    modCompileOnly "curse.maven:malilib-303119:7763655"
+    compileOnly "curse.maven:litematica-308892:8382368"
+    compileOnly "curse.maven:malilib-303119:7763655"
 }
 
 java {
