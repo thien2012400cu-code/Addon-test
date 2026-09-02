@@ -26,15 +26,15 @@ repositories {
 
 dependencies {
     minecraft libs.minecraft
-    implementation libs.fabric.loader
+    mappings "net.fabricmc:yarn:${libs.versions.yarn.mappings.get()}:v2"
+    modImplementation libs.fabric.loader
 
-    // Fabric API ban moi cho 1.21.11 (Meteor keo ban cu ve gay xung dot)
-    implementation "curse.maven:fabric-api-306612:7570021"
+    modImplementation "curse.maven:fabric-api-306612:7203251"
 
-    implementation libs.meteor.client
+    modImplementation libs.meteor.client
 
-    compileOnly "curse.maven:litematica-308892:8382368"
-    compileOnly "curse.maven:malilib-303119:7763655"
+    modCompileOnly "curse.maven:litematica-308892:7130835"
+    modCompileOnly "curse.maven:malilib-303119:7130809"
 }
 
 java {
